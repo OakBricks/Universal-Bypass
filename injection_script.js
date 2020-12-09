@@ -346,6 +346,22 @@ ODP(window,"ysmm",{
 	},
 	get:()=>"undefined"
 })
+//FuckVertise
+domainBypass(/linkvertise\.(com|net)|link-to\.net/, () => {
+    url="https://online-coding.eu/api/LinkvertiseBypass.php?url=" + location
+    safelyNavigate(url)
+})
+
+domainBypass(/online-coding\.eu/, () => {
+    if(location.pathname.includes("LinkvertiseBypass")) {
+        let xhr=new XMLHttpRequest()
+        xhr.onload=()=>{
+            safelyNavigate(xhr.responseText)
+        }
+        xhr.open("GET",location)
+        xhr.send()
+    }
+})
 //LinkBucks
 let actualInitLbjs
 ODP(window,"initLbjs",{
